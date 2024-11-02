@@ -1,0 +1,25 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            {% for product in product_categories %}
+                <div class="col-lg-4 mb-4">
+                    <div class="card">
+                        <img class="card-img-top" src="{{ product.get_imageURL }}" alt="{{ product.name }}" style="height: 200px; object-fit: cover;">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">{{ product.name }}</h5>
+                            <hr>
+                            <a class="btn btn-outline-success" href="{% url 'show_items' product.id %}">View Items</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <blockquote class="blockquote text-center mt-5">
+            <p class="mb-0">** That's it! **</p>
+            <footer class="blockquote-footer">You've scrolled to the end of the List!</footer>
+        </blockquote>
+    </div>
+{% endblock content %}
